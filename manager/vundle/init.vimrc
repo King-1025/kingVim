@@ -6,7 +6,8 @@ filetype off                  " required
 call vundle#begin(g:kingVimPlugin)
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+"Plugin 'VundleVim/Vundle.vim'
+Plugin 'file://'.g:kingVimManager.'/vundle/source'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'

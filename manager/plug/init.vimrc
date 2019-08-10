@@ -1,5 +1,7 @@
 call plug#begin(g:kingVimPlugin)
 
+Plug g:kingVimManager.'/plug/source'
+
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'

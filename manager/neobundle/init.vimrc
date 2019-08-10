@@ -11,7 +11,8 @@ call neobundle#begin(g:kingVimPlugin)
 
 " Let NeoBundle manage NeoBundle
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+"NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleFetch g:kingVimManager.'/neobundle/source'
 
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
