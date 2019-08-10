@@ -5,7 +5,10 @@ VIMRC=vimrc
 MANAGER=
 
 VUNDLE_GIT="https://github.com/VundleVim/Vundle.vim.git"
-NEOBUNDLE_GIT="https://github.com/Shougo/neobundle.vim"
+NEOBUNDLE_GIT="https://github.com/Shougo/neobundle.vim.git"
+PATHOGEN_GIT="https://github.com/tpope/vim-pathogen.git"
+
+PLUG_URL="https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
 function app()
 {
@@ -34,6 +37,12 @@ function may_download()
 	   "neobundle")
                git clone $NEOBUNDLE_GIT "$s" -j4
 	    ;;
+           "pathogen")
+	       git clone $PATHOGEN_GIT "$s" -j4
+	    ;;
+	   "plug")
+               curl -fLo "$s/autoload/plug.vim" --create-dirs $PLUG_URL
+	    ;;
 	esac
      else
 	echo "$m is ok!"
@@ -48,6 +57,8 @@ function install()
      case "$1" in
 	"vundle") vim +PluginInstall +qall ;;
 	"neobundle") vim +NeoBundleInstall +qall ;;
+	"pathogen") echo "pathogen pass" ;;
+	"plug") vim +PlugInstall +qall ;;
      esac
      echo "success!"
   fi
@@ -110,11 +121,17 @@ function select_manager()
    echo "Manager List:"
    echo -e "\t 0  ---  Vundle"
    echo -e "\t 1  ---  NeoBundle"
+   echo -e "\t 2  ---  Pathogen"
+   echo -e "\t 3  ---  Plug"
+   echo -e "\t 99 ---  Quit"
    echo ""
    read -p "please select:" opt
    case $opt in
       "0") MANAGER="vundle" ;;
       "1") MANAGER="neobundle" ;;
+      "2") MANAGER="pathogen" ;;
+      "3") MANAGER="plug" ;;
+      "99") exit 0 ;;
        * ) echo select error!; exit 1 ;;
    esac
 }
