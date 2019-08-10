@@ -2,6 +2,7 @@ nmap <C-t> :NERDTreeToggle<cr>
 
 syntax enable
 let g:rehash256 = 0
+colorscheme herald
 
 let g:airline_theme="luna"
 

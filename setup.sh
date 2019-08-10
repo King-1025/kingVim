@@ -5,6 +5,7 @@ VIMRC=vimrc
 MANAGER=
 
 VUNDLE_GIT="https://github.com/VundleVim/Vundle.vim.git"
+NEOBUNDLE_GIT="https://github.com/Shougo/neobundle.vim"
 
 function app()
 {
@@ -30,6 +31,9 @@ function may_download()
 	   "vundle")
                git clone $VUNDLE_GIT "$s" -j4
 	    ;;
+	   "neobundle")
+               git clone $NEOBUNDLE_GIT "$s" -j4
+	    ;;
 	esac
      else
 	echo "$m is ok!"
@@ -43,6 +47,7 @@ function install()
      echo "installing plugins by $1..."
      case "$1" in
 	"vundle") vim +PluginInstall +qall ;;
+	"neobundle") vim +NeoBundleInstall +qall ;;
      esac
      echo "success!"
   fi
@@ -103,11 +108,13 @@ function create()
 function select_manager()
 {
    echo "Manager List:"
-   echo -e "\t 0  ---  vundle"
+   echo -e "\t 0  ---  Vundle"
+   echo -e "\t 1  ---  NeoBundle"
    echo ""
    read -p "please select:" opt
    case $opt in
       "0") MANAGER="vundle" ;;
+      "1") MANAGER="neobundle" ;;
        * ) echo select error!; exit 1 ;;
    esac
 }
